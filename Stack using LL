@@ -24,7 +24,7 @@ void create()
     }
 }
 
-void insert()
+void push()
 {
     if(head==NULL)
     {
@@ -47,7 +47,7 @@ void insert()
     }
 }
 
-void delete()
+void pop()
 {
     struct node *prenode;
     temp = head;
@@ -75,7 +75,7 @@ void display()
         printf("\nThe Stack elements are: ");
         while(temp!=NULL)
         {
-            printf("%d\t",temp->data);
+            printf("%d--->",temp->data);
             temp = temp->next;
         }
     }
@@ -87,9 +87,9 @@ int main()
     while(1)
     {
         printf("\n***************MENU****************\n");
-        printf("\n1. Create");
-        printf("\n2. Insert");
-        printf("\n3. Delete");
+        printf("\n1. Create a Stack");
+        printf("\n2. Push");
+        printf("\n3. Pop");
         printf("\n4. Display");
         printf("\n\nEnter your choice: ");
         scanf("%d",&choice);
@@ -99,10 +99,10 @@ int main()
                 create();
                 break;
             case 2:
-                insert();
+                push();
                 break;
             case 3:
-                delete();
+                pop();
                 break;
             case 4:
                 display();
