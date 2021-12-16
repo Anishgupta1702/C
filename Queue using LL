@@ -1,0 +1,110 @@
+#include<stdlib.h>
+#include<stdio.h>
+
+int count=0;
+struct node
+{
+    int data;
+    struct node *next;
+}*head=NULL,*temp=NULL,*newnode,*top=NULL;
+
+void create()
+{
+    if(top==NULL)
+    {
+        newnode = (struct node*)malloc(sizeof(struct node));
+        newnode->next = NULL;
+        printf("Enter the data: ");
+        scanf("%d",&newnode->data);
+        head = top = newnode;
+        display();
+    }
+    else
+    {
+        printf("Stack is already created!!");
+    }
+}
+
+void insert()
+{
+    if(head==NULL)
+    {
+        create();
+    }
+    else
+    {
+        newnode = (struct node*)malloc(sizeof(struct node));
+        newnode->next = NULL;
+        printf("Enter the data: ");
+        scanf("%d",&newnode->data);
+        top = head;
+        while(top->next!=NULL)
+        {
+            top = top->next;
+        }
+        top->next = newnode;
+        top = newnode;
+        display();
+    }
+}
+
+void delete()
+{
+    temp = head;
+    head = head->next;
+    printf("The deleted element is: %d\n",temp->data);
+    free(temp);
+    display();
+}
+
+void display()
+{
+    if(head==NULL)
+    {
+        printf("The Stack is empty\n");
+    }
+    else
+    {
+        temp = head;
+        printf("\nThe Stack elements are: ");
+        while(temp!=NULL)
+        {
+            printf("%d\t",temp->data);
+            temp = temp->next;
+        }
+    }
+}
+
+int main()
+{
+    int choice;
+    while(1)
+    {
+        printf("\n***************MENU****************\n");
+        printf("\n1. Create");
+        printf("\n2. Insert");
+        printf("\n3. Delete");
+        printf("\n4. Display");
+        printf("\n\nEnter your choice: ");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+            case 1:
+                create();
+                break;
+            case 2:
+                insert();
+                break;
+            case 3:
+                delete();
+                break;
+            case 4:
+                display();
+                break;
+            default:
+                printf("\nInvalid Choice\n");
+                break;
+        }
+    }
+    return 0;
+}
